@@ -210,21 +210,24 @@ BFloat.prototype.toChineseString = function () {
     else {
         if (this._scale <= 15) {
             let unit = "";
-            let needChange = parseInt(Math.floor(Math.floor(this._scale) % 3)+"");
-            //然后进行小数点向右的余数次位移，使得位数变为3的倍数
+            let needChange = parseInt(Math.floor(Math.floor(this.scale) % 4) + "");
+            //然后进行小数点向右的余数次位移，使得位数变为4的倍数
             if (needChange != 0) {
-                this.changeScale(this._scale - needChange);
+                this.changeScale(this.scale - needChange);
             }
-            if (this._scale <= 4) {
+            if (this.scale <= 4) {
                 unit = "万";
             }
-            else if (this._scale <= 8) {
+            else if (this.scale <= 8) {
                 unit = "亿";
+            }
+            else if (this.scale <= 12){
+                unit = "万亿";
             }
             else {
                 unit = "兆";
             }
-            ret = parseFloat(this._num.toFixed(2)) + "" + unit;
+            ret = parseFloat(this.num.toFixed(2)) + "" + unit;
         }
         else {
             ret = this.toLetterString();
