@@ -111,7 +111,7 @@ BFloat.prototype.pow = function (doubleY) {
     return ret;
 }
 
-BFloat.prototype.equals = function (obj) {
+BFloat.prototype.equals = function (o) {
     return this._num == o._scale && this._scale == o._scale;
 }
 
